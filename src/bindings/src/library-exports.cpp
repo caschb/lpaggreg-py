@@ -1,6 +1,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <pybind11/operators.h>
 #include "ovaluesn.h"
+#include "quality.h"
 
 namespace py = pybind11;
 using namespace lpaggreg;
@@ -54,4 +56,49 @@ PYBIND11_MODULE(_lpaggreg, m) {
     .def("getI", &OValuesN4::getI)
     .def("getJ", &OValuesN4::getJ)
     .def("getK", &OValuesN4::getK);
+
+  py::class_<Quality>(m, "Quality")
+    .def(py::init<>())                                 // default constructor
+    .def(py::init<lp_quality_type, lp_quality_type>()) // param constructor
+    .def("getGain", &Quality::getGain)
+    .def("setGain", &Quality::setGain)
+    .def("getLoss", &Quality::getLoss)
+    .def("setLoss", &Quality::setLoss)
+    .def("addToGain", &Quality::addToGain)
+    .def("addToLoss", &Quality::addToLoss)
+    .def("iadd",
+	 [](Quality &self, Quality &other) {
+	   self += other;
+	   return self;
+	 })
+    .def("isub",
+	 [](Quality &self, Quality &other) {
+	   self -= other;
+	   return self;
+	 })
+    .def("imul",
+	 [](Quality &self, Quality &other) {
+	   self *= other;
+	   return self;
+	 })
+    .def("idiv",
+	 [](Quality &self, Quality &other) {
+	   self /= other;
+	   return self;
+	 })
+
+      // Arithmetic and comparison operators
+    .def(py::self + py::self)
+    .def(py::self - py::self)
+    .def(py::self * py::self)
+    .def(py::self / py::self)
+    .def(py::self == py::self)
+    .def(py::self != py::self)
+
+    // __repr__ via ostream
+    .def("__repr__", [](const Quality &q) {
+      std::ostringstream os;
+      os << q;
+      return os.str();
+  });
 }
