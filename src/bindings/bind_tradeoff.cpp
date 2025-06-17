@@ -16,26 +16,10 @@ BIND(tradeoff) {
     .def(py::init<lp_quality_type, shared_ptr<Quality>>())
     .def(py::init<shared_ptr<Quality>, float>())
     .def("computePIC", &Tradeoff::computePIC)
-    .def("iadd",
-	 [](Tradeoff &self, Tradeoff &other){
-	   self += other;
-	   return self;
-	 })
-    .def("isub",
-	 [](Tradeoff &self, Tradeoff &other){
-	   self -= other;
-	   return self;
-	 })
-    .def("imul",
-	 [](Tradeoff &self, Tradeoff &other){
-	   self *= other;
-	   return self;
-	 })
-    .def("idiv",
-	 [](Tradeoff &self, Tradeoff &other){
-	   self /= other;
-	   return self;
-	 })
+    .def(py::self += py::self)
+    .def(py::self -= py::self)
+    .def(py::self *= py::self)
+    .def(py::self /= py::self)
     .def("set", &Tradeoff::set)
     .def("getQuality", &Tradeoff::getQuality)
     .def("getValue", &Tradeoff::getValue)
