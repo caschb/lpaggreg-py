@@ -10,4 +10,5 @@ PYBIND11_MODULE(_lpaggreg, m) {
   bind_quality(m);
   bind_tradeoff(m);
   bind_utmatrix_double(m);
+  bind_utmatrix_quality(m);
 }
