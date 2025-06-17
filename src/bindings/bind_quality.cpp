@@ -17,26 +17,10 @@ BIND(quality) {
     .def("setLoss", &Quality::setLoss)
     .def("addToGain", &Quality::addToGain)
     .def("addToLoss", &Quality::addToLoss)
-    .def("iadd",
-	 [](Quality &self, Quality &other) {
-	   self += other;
-	   return self;
-	 })
-    .def("isub",
-	 [](Quality &self, Quality &other) {
-	   self -= other;
-	   return self;
-	 })
-    .def("imul",
-	 [](Quality &self, Quality &other) {
-	   self *= other;
-	   return self;
-	 })
-    .def("idiv",
-	 [](Quality &self, Quality &other) {
-	   self /= other;
-	   return self;
-	 })
+    .def(py::self += py::self)
+    .def(py::self -= py::self)
+    .def(py::self *= py::self)
+    .def(py::self /= py::self)
     .def(py::self + py::self)
     .def(py::self - py::self)
     .def(py::self * py::self)
