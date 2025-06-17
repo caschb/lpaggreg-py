@@ -3,7 +3,8 @@ set(SOURCES
     bindings/bindings.hpp
     bindings/bind_ovalues.cpp
     bindings/bind_quality.cpp
-    bindings/bind_umatrix.cpp
+    bindings/bind_tradeoff.cpp
+    bindings/bind_utmatrix.cpp
 )
 
 pybind11_add_module(_lpaggreg MODULE ${SOURCES})

@@ -12,4 +12,5 @@ BIND(ovalues_n2);
 BIND(ovalues_n3);
 BIND(ovalues_n4);
 BIND(quality);
+BIND(tradeoff);
 BIND(utmatrix_double);

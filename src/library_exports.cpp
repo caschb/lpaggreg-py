@@ -8,5 +8,6 @@ PYBIND11_MODULE(_lpaggreg, m) {
   bind_ovalues_n3(m);
   bind_ovalues_n4(m);
   bind_quality(m);
+  bind_tradeoff(m);
   bind_utmatrix_double(m);
 }
