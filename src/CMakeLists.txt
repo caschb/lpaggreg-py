@@ -1,10 +1,15 @@
 set(SOURCES
     library_exports.cpp
     bindings/bindings.hpp
+    bindings/bind_aggregation.cpp
     bindings/bind_ovalues.cpp
+    bindings/bind_partition.cpp
+    bindings/bind_partitioner.cpp
+    bindings/bind_qualities.cpp
     bindings/bind_quality.cpp
     bindings/bind_tradeoff.cpp
     bindings/bind_utmatrix.cpp
+
 )
 
 pybind11_add_module(_lpaggreg MODULE ${SOURCES})
